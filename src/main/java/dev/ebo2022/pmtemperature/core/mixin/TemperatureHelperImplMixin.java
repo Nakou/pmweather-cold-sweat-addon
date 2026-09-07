@@ -6,7 +6,6 @@ import dev.ebo2022.pmtemperature.core.PMTemperature;
 import dev.ebo2022.pmtemperature.core.PMTemperatureConfig;
 import dev.ebo2022.pmtemperature.core.util.PMUtil;
 import dev.protomanly.pmweather.config.ServerConfig;
-import dev.protomanly.pmweather.event.GameBusEvents;
 import dev.protomanly.pmweather.weather.ThermodynamicEngine;
 import dev.protomanly.pmweather.weather.WeatherHandler;
 import dev.protomanly.pmweather.weather.WindEngine;
@@ -33,7 +32,7 @@ public class TemperatureHelperImplMixin {
             WeatherHandler handler = PMUtil.getWeatherHandler(level);
             if (handler != null) {
                 ThermodynamicEngine.AtmosphericDataPoint data  = ThermodynamicEngine.samplePoint(
-                        GameBusEvents.MANAGERS.get(dimension),
+                        handler,
                         pos.getCenter(),
                         level,
                         null,
